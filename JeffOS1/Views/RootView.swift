@@ -50,6 +50,9 @@ struct RootView: View {
         .sheet(isPresented: $model.isQuickCapturePresented) {
             QuickCaptureView()
         }
+        .onOpenURL { url in
+            model.open(url)
+        }
     }
 
     private var preferredColorScheme: ColorScheme? {
