@@ -8,7 +8,7 @@ Jeff OS is relationship-first rather than app-first. Sprint 1 deliberately uses 
 
 - **App**: SwiftUI application entry point and composition root.
 - **Models**: SwiftData entities for people, commitments, and meetings.
-- **Services**: deterministic starter-data setup for the first launch.
+- **Services**: reserved for future application workflows; fresh installs begin with an empty database.
 - **Views**: SwiftUI screens and reusable presentation components.
 - **ViewModels**: observable application state and user actions.
 - **Integrations**: reserved for later sprints; Sprint 1 has no active integrations.

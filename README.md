@@ -15,7 +15,7 @@ The first usable morning workflow includes:
 - Global quick capture with `Command-K`
 - Dashboard, People, Commitments, and Settings navigation only
 - Native system, light, and dark appearance modes
-- Starter data that makes the first launch immediately useful
+- A focused onboarding state for an empty first launch
 
 ## Open the project
 

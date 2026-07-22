@@ -1,8 +1,6 @@
-import SwiftData
 import SwiftUI
 
 struct RootView: View {
-    @Environment(\.modelContext) private var modelContext
     @EnvironmentObject private var model: AppModel
     @AppStorage("appearance") private var appearance = "System"
 
@@ -51,9 +49,6 @@ struct RootView: View {
         .preferredColorScheme(preferredColorScheme)
         .sheet(isPresented: $model.isQuickCapturePresented) {
             QuickCaptureView()
-        }
-        .task {
-            StarterDataService.seedIfNeeded(in: modelContext)
         }
     }
 

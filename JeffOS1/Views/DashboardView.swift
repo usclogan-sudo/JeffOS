@@ -18,11 +18,15 @@ struct DashboardView: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 24) {
                 greeting
-                LazyVGrid(columns: columns, alignment: .leading, spacing: 18) {
-                    prioritiesSection
-                    meetingsSection
-                    waitingSection
-                    commitmentsSection
+                if people.isEmpty && commitments.isEmpty {
+                    onboardingEmptyState
+                } else {
+                    LazyVGrid(columns: columns, alignment: .leading, spacing: 18) {
+                        prioritiesSection
+                        meetingsSection
+                        waitingSection
+                        commitmentsSection
+                    }
                 }
             }
             .padding(28)
@@ -37,11 +41,36 @@ struct DashboardView: View {
 
     private var greeting: some View {
         VStack(alignment: .leading, spacing: 6) {
-            Text("Good Morning, \(displayName)")
+            Text("\(timeOfDayGreeting), \(displayName)")
                 .font(.system(size: 36, weight: .bold, design: .rounded))
             Text(Date.now.formatted(.dateTime.weekday(.wide).month(.wide).day()))
                 .font(.title3)
                 .foregroundStyle(.secondary)
+        }
+    }
+
+    private var onboardingEmptyState: some View {
+        VStack(spacing: 12) {
+            Image(systemName: "sun.max.fill")
+                .font(.system(size: 40))
+                .foregroundStyle(.yellow)
+            Text("Welcome to Jeff OS")
+                .font(.title2.weight(.semibold))
+            Text("Add your first relationship or capture your first commitment to begin.")
+                .font(.title3)
+                .foregroundStyle(.secondary)
+                .multilineTextAlignment(.center)
+        }
+        .frame(maxWidth: .infinity, minHeight: 360)
+        .padding(24)
+        .background(.regularMaterial, in: RoundedRectangle(cornerRadius: 18, style: .continuous))
+    }
+
+    private var timeOfDayGreeting: String {
+        switch Calendar.current.component(.hour, from: .now) {
+        case 5..<12: "Good morning"
+        case 12..<17: "Good afternoon"
+        default: "Good evening"
         }
     }
 
