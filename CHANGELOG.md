@@ -2,6 +2,14 @@
 
 ## Unreleased
 
+- Delivered the Sprint 1 executive dashboard as the default launch experience.
+- Added SwiftData-backed People with full CRUD, search, relationship health, notes, and next actions.
+- Added SwiftData-backed Commitments with people, due dates, status, completion, and dashboard visibility.
+- Added local daily meetings and a focused meeting capture sheet.
+- Added global quick capture that stores text exactly as entered.
+- Reduced navigation to Dashboard, People, Commitments, and Settings.
+- Added keyboard shortcuts, native animations, appearance controls, and dark-mode support.
+- Removed inactive Graph, AI, and Asana prototype code from the Sprint 1 application target.
 - Confirmed the complete baseline builds for macOS with Xcode 26.6 and Swift 5 language mode.
 - Set the project to macOS-only with a macOS 14.0 deployment target.
 - Organized sources into App, Models, Services, Views, ViewModels, Integrations, RelationshipEngine, and Resources.

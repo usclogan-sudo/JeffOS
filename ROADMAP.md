@@ -11,6 +11,8 @@
 
 ## Milestone 2: Microsoft 365
 
+This milestone begins only after the Sprint 1 morning workflow is validated.
+
 - MSAL delegated sign-in
 - Outlook message synchronization
 - Calendar synchronization
@@ -19,10 +21,10 @@
 
 ## Recommended next sprint
 
-1. Add a test target and fixtures for `RelationshipMapper` and follow-up ordering.
-2. Introduce protocols around Graph, AI, and Asana clients so orchestration can be tested offline.
-3. Implement MSAL delegated authentication and Keychain token storage.
-4. Add a deterministic identity-resolution layer before persisting interactions.
+1. Use Sprint 1 daily and collect friction notes from the morning workflow.
+2. Add tests for priority ordering, persistence, and CRUD behavior.
+3. Refine local meeting and commitment workflows based on actual usage.
+4. Design integration protocols without connecting live services.
 
 ## Milestone 3: Relationship intelligence
 
