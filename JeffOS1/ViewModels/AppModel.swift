@@ -3,6 +3,29 @@ import SwiftUI
 
 @MainActor
 final class AppModel: ObservableObject {
+    enum DeepLinkRoute: Equatable {
+        case dashboard
+        case people
+        case commitments
+        case capture
+        case meetings
+
+        init(url: URL) {
+            guard url.scheme?.lowercased() == "jeffos" else {
+                self = .dashboard
+                return
+            }
+
+            switch url.host?.lowercased() {
+            case "people": self = .people
+            case "commitments": self = .commitments
+            case "capture": self = .capture
+            case "meetings": self = .meetings
+            default: self = .dashboard
+            }
+        }
+    }
+
     enum Workspace: String, CaseIterable, Identifiable {
         case dashboard = "Dashboard"
         case people = "People"
@@ -27,6 +50,20 @@ final class AppModel: ObservableObject {
     func select(_ workspace: Workspace) {
         withAnimation(.snappy) {
             self.workspace = workspace
+        }
+    }
+
+    func open(_ url: URL) {
+        switch DeepLinkRoute(url: url) {
+        case .dashboard, .meetings:
+            select(.dashboard)
+        case .people:
+            select(.people)
+        case .commitments:
+            select(.commitments)
+        case .capture:
+            select(.dashboard)
+            isQuickCapturePresented = true
         }
     }
 }
