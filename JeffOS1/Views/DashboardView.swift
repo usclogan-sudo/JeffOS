@@ -5,7 +5,6 @@ struct DashboardView: View {
     @Query(sort: \Person.name) private var people: [Person]
     @Query(sort: \Commitment.createdAt, order: .reverse) private var commitments: [Commitment]
     @Query(sort: \Meeting.startDate) private var meetings: [Meeting]
-    @AppStorage("displayName") private var displayName = "Jeff"
     @AppStorage("dailyPriorityLimit") private var dailyPriorityLimit = 3
     @State private var isAddingMeeting = false
 
@@ -18,7 +17,7 @@ struct DashboardView: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 24) {
                 greeting
-                if people.isEmpty && commitments.isEmpty {
+                if people.isEmpty && commitments.isEmpty && meetings.isEmpty {
                     onboardingEmptyState
                 } else {
                     LazyVGrid(columns: columns, alignment: .leading, spacing: 18) {
@@ -41,10 +40,13 @@ struct DashboardView: View {
 
     private var greeting: some View {
         VStack(alignment: .leading, spacing: 6) {
-            Text("\(timeOfDayGreeting), \(displayName)")
+            Text(timeOfDayGreeting)
                 .font(.system(size: 36, weight: .bold, design: .rounded))
-            Text(Date.now.formatted(.dateTime.weekday(.wide).month(.wide).day()))
+            Text("Here’s what deserves your attention today.")
                 .font(.title3)
+                .foregroundStyle(.secondary)
+            Text(Date.now.formatted(.dateTime.weekday(.wide).month(.wide).day()))
+                .font(.callout)
                 .foregroundStyle(.secondary)
         }
     }
@@ -68,9 +70,9 @@ struct DashboardView: View {
 
     private var timeOfDayGreeting: String {
         switch Calendar.current.component(.hour, from: .now) {
-        case 5..<12: "Good morning"
-        case 12..<17: "Good afternoon"
-        default: "Good evening"
+        case 0..<12: "Good morning, Jeff."
+        case 12..<18: "Good afternoon, Jeff."
+        default: "Good evening, Jeff."
         }
     }
 
