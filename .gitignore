@@ -1,8 +1,11 @@
 # Xcode
 DerivedData/
 build/
+*.xcresult
 *.xcuserstate
 xcuserdata/
+*.xccheckout
+*.xcscmblueprint
 
 # Swift Package Manager
 .build/
@@ -16,5 +19,6 @@ xcuserdata/
 .env.*
 !.env.example
 Secrets.xcconfig
+*.xcconfig.local
 *.p12
 *.mobileprovision

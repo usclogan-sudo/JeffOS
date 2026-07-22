@@ -2,10 +2,12 @@
 
 ## Milestone 1: Buildable baseline
 
-- Resolve compiler and project-setting issues
-- Add tests and continuous integration
-- Confirm deployment target and Swift version
-- Remove unused bridging header if unnecessary
+- [x] Confirm the macOS build succeeds
+- [x] Confirm the deployment target and Swift language mode
+- [x] Remove the unused bridging header
+- [x] Organize the SwiftUI source tree by responsibility
+- [ ] Add unit and UI test targets
+- [ ] Add continuous integration for Debug and Release builds
 
 ## Milestone 2: Microsoft 365
 
@@ -14,6 +16,13 @@
 - Calendar synchronization
 - Contact identity resolution
 - Secure Keychain token storage
+
+## Recommended next sprint
+
+1. Add a test target and fixtures for `RelationshipMapper` and follow-up ordering.
+2. Introduce protocols around Graph, AI, and Asana clients so orchestration can be tested offline.
+3. Implement MSAL delegated authentication and Keychain token storage.
+4. Add a deterministic identity-resolution layer before persisting interactions.
 
 ## Milestone 3: Relationship intelligence
 
